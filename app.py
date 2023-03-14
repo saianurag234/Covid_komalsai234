@@ -27,5 +27,5 @@ generate_pred = st.button("Predict")
 if generate_pred:
     if uploaded_file is not None:
         bytes_data = uploaded_file.getvalue()
-        image = load_img(bytes_data,target_size=(128,128)) 
+        image = load_img(uploaded_file,target_size=(128,128)) 
         
