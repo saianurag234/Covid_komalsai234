@@ -7,4 +7,4 @@ seaborn
 scikit-learn==1.2.1
 scikit-image==0.18.3
 streamlit==1.11.0
-keras==2.10.0
+keras==2.9.0rc0
