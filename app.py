@@ -23,11 +23,20 @@ uploaded_file = st.file_uploader("", type=['jpg','png','jpeg'])
 # creating a predict button
 generate_pred = st.button("Predict")
 
+def predictions(image,model):
+    img_array = np.array(image)
+    img = img_array / 255.0
+    image = img.resize((128,128))
+    img = img.reshape(1,128,128,3)
+    
+    pred = model.predict(img)
+    
+    return pred
+
 
 if generate_pred:
     if uploaded_file is not None:
         image = Image.open(uploaded_file)
-        img_array = np.array(image)
-        st.title(img_array)
-      
-    
+        pred = predictions(image,model)
+        st.title(pred)
+        
