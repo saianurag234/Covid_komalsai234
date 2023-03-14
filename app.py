@@ -2,6 +2,8 @@ import streamlit as st
 import tensorflow as tf
 import numpy as np
 from PIL import Image
+from tf.keras.preprocessing.image import load_img
+from tf.keras.preprocessing.image import img_to_array
 
 # creating the title
 st.title("Covid-19 Image Classifier")
@@ -26,8 +28,10 @@ def import_n_pred(image_data,model):
     size = (128,128)
     image = image_data.resize(size, Image.ANTIALIAS)
     image = np.array(image)
-    image = np.expand_dims(image, axis=0) 
+    image = image/225.0
+    image = image.ewshape(1,128,128,3)
     pred = model.predict(image)
+    return pred
 
 if generate_pred:
     image = Image.open(upload_file)
