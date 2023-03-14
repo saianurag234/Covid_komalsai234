@@ -33,7 +33,7 @@ def import_n_pred(image_data,model):
 
 if generate_pred:
     image = Image.open(upload_file)
-    
+    st.title(image)
     with st.expander('image', expanded=True):
         st.image(image, use_column_width=True)
     pred = import_n_pred(image,model)
