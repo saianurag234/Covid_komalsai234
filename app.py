@@ -20,7 +20,6 @@ upload_file = st.file_uploader("Upload the Chest X-ray", type = 'jpg')
 # creating a predict button
 generate_pred = st.button("Predict")
 
-print(upload_file.shape)
 
 model = tf.keras.models.load_model('covid_classifier.h5', compile=False)
 def import_n_pred(image_data,model):
