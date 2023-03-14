@@ -38,5 +38,5 @@ if generate_pred:
     labels = ['Covid-19','Healthy']
     st.title("The Prediction of the image is {}".format(labels[np.argmax(pred)]))
 
-if __name__ = "__main__":
+if __name__ == "__main__":
   main()
