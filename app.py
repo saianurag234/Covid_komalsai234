@@ -25,12 +25,13 @@ generate_pred = st.button("Predict")
 
 model = tf.keras.models.load_model('covid_classifier.h5', compile=False)
 def import_n_pred(image_data,model):
-    size = (128,128)
-    image = image_data.resize(size, Image.ANTIALIAS)
-    image = np.array(image)
-    image = image/225.0
-    image = image.reshape(1,128,128,3)
-    pred = model.predict(image)
+    image = load_img(image_data,target_size=(128,128))  
+    img = img_to_array(image)
+    img = np.array(image)
+    image = img.resize((128,128))
+    img = img.reshape(1,128,128,3)
+   
+    pred = model.predict(img)
     return pred
 
 if generate_pred:
