@@ -23,12 +23,10 @@ uploaded_file = st.file_uploader("", type=['jpg','png','jpeg'])
 # creating a predict button
 generate_pred = st.button("Predict")
 
-def prediction(image, model):
-    image = img_to_array(image)
-    st.title(image)
 
 if generate_pred:
     if uploaded_file is not None:
         bytes_data = uploaded_file.getvalue()
-        prediction(bytes_data,model)
+        img = img_to_array(bytes_data)
+        st.title(img)
         
