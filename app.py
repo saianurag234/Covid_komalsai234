@@ -36,6 +36,8 @@ def import_n_pred(image_data,model):
 
 if generate_pred:
     image = Image.open(upload_file)
+    if uploaded_file is not None:
+        bytes_data = uploaded_file.getvalue()
     with st.expander('image', expanded=True):
         st.image(image, use_column_width=True)
     pred = import_n_pred(image,model)
