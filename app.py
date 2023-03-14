@@ -27,7 +27,6 @@ def predictions(image,model):
     image = image_data.resize((128,128), Image.ANTIALIAS)
     img_array = np.array(image)
     img = img_array / 255.0
-    data = img.reshape(1, 128, 128, 1)
     
     pred = model.predict(img)
     
