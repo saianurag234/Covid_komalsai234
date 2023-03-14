@@ -2,8 +2,8 @@ import streamlit as st
 import tensorflow as tf
 import numpy as np
 from PIL import Image
-from tf.keras.preprocessing.image import load_img
-from tf.keras.preprocessing.image import img_to_array
+from tensorflow.keras.preprocessing.image import load_img
+from tensorflow.keras.preprocessing.image import img_to_array
 
 # creating the title
 st.title("Covid-19 Image Classifier")
