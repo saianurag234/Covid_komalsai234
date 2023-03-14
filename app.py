@@ -24,6 +24,7 @@ uploaded_file = st.file_uploader("", type=['jpg','png','jpeg'])
 generate_pred = st.button("Predict")
 
 def predictions(image,model):
+    image = image_data.resize((128,128), Image.ANTIALIAS)
     img_array = np.array(image)
     img = img_array / 255.0
     data = img.reshape(1, 128, 128, 1)
