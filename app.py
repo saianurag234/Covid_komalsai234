@@ -1,6 +1,7 @@
 import streamlit as st
 import tensorflow as tf
 import numpy as np
+import cv2
 from PIL import Image
 
 # creating the title
@@ -33,6 +34,7 @@ def import_n_pred(image_data,model):
 
 if generate_pred:
     image = Image.open(upload_file)
+    image = cv2.imread(image)
     st.title(image)
     with st.expander('image', expanded=True):
         st.image(image, use_column_width=True)
