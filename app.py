@@ -26,6 +26,8 @@ generate_pred = st.button("Predict")
 
 if generate_pred:
     if uploaded_file is not None:
-        bytes_data = uploaded_file.getvalue()
-        image = load_img(uploaded_file,target_size=(128,128)) 
-        
+        image = Image.open(uploaded_file)
+        img_array = np.array(image)
+        st.title(img_array)
+      
+    
