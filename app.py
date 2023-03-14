@@ -26,7 +26,7 @@ generate_pred = st.button("Predict")
 def predictions(image,model):
     img_array = np.array(image)
     img = img_array / 255.0
-    img = img.reshape(1,128,128,3)
+    data = img.reshape(1, 128, 128, 1)
     
     pred = model.predict(img)
     
