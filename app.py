@@ -18,6 +18,9 @@ st.sidebar.image("https://post.healthline.com/wp-content/uploads/2020/08/chest-x
 
 # creating an uploader to upload the Chest X-ray images
 upload_file = st.file_uploader("Upload the Chest X-ray", type = 'jpg')
+if uploaded_file is not None:
+    bytes_data = uploaded_file.getvalue()
+    st.write(bytes_data)
 
 # creating a predict button
 generate_pred = st.button("Predict")
@@ -35,11 +38,6 @@ def import_n_pred(image_data,model):
     return pred
 
 if generate_pred:
-    image = Image.open(upload_file)
-    if uploaded_file is not None:
-        bytes_data = uploaded_file.getvalue()
-    with st.expander('image', expanded=True):
-        st.image(image, use_column_width=True)
-    pred = import_n_pred(image,model)
+    pred = import_n_pred(bytes_data,model)
     labels = ['Covid-19','Healthy']
     st.title(pred)
