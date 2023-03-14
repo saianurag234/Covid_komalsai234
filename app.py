@@ -18,8 +18,8 @@ st.sidebar.image("https://post.healthline.com/wp-content/uploads/2020/08/chest-x
 
 # creating an uploader to upload the Chest X-ray images
 upload_file = st.file_uploader("Upload the Chest X-ray", type = 'jpg')
-if uploaded_file is not None:
-    bytes_data = uploaded_file.getvalue()
+if upload_file is not None:
+    bytes_data = upload_file.getvalue()
     st.write(bytes_data)
 
 # creating a predict button
