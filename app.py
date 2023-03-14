@@ -24,5 +24,5 @@ generate_pred = st.button("Predict")
 if generate_pred:
     if uploaded_file is not None:
         bytes_data = uploaded_file.getvalue()
-        st.title(bytes_data)
+        st.image(bytes_data)
     
