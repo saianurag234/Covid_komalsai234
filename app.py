@@ -21,5 +21,6 @@ uploaded_file = st.file_uploader("", type=['jpg','png','jpeg'])
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
     image = load_img(image)
+    image = img_to_array(image)
     st.title(image)
     
