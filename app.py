@@ -15,12 +15,14 @@ st.sidebar.subheader("Udayagiri Varun")
 st.sidebar.subheader("Sejal Singh")
 st.sidebar.image("https://post.healthline.com/wp-content/uploads/2020/08/chest-x-ray_thumb.jpg", width=None)
 
+# creating a predict button
+generate_pred = st.button("Predict")
+
 # creating an uploader to upload the Chest X-ray images
 uploaded_file = st.file_uploader("", type=['jpg','png','jpeg'])
 
-if uploaded_file is not None:
-    image = Image.open(uploaded_file)
-    image = load_img(image)
-    image = img_to_array(image)
-    st.title(image)
+if generate_pred:
+    if uploaded_file is not None:
+        bytes_data = uploaded_file.getvalue()
+        st.title(bytes_data)
     
