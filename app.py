@@ -8,10 +8,10 @@ st.title("Covid-19 Image Classifier")
 
 # creating a side bar 
 st.sidebar.title("Created By:")
-st.sidebar.subheader("P.S.S.Keerthana")
-st.sidebar.subheader("P.Komal Sai Anurag")
-st.sidebar.subheader("Udayagiri Varun")
-st.sidebar.subheader("Sejal Singh")
+st.sidebar.subheader("     P.S.S.Keerthana")
+st.sidebar.subheader("     P.Komal Sai Anurag")
+st.sidebar.subheader("     Udayagiri Varun")
+st.sidebar.subheader("     Sejal Singh")
 st.sidebar.image("https://post.healthline.com/wp-content/uploads/2020/08/chest-x-ray_thumb.jpg", width=None)
 
 # creating an uploader to upload the Chest X-ray images
