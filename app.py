@@ -21,3 +21,22 @@ upload_file = st.file_uploader("Upload the Chest X-ray", type = 'jpg')
 generate_pred = st.button("Predict")
 
 model = tf.keras.models.load_model('covid_classifier.h5', compile=False)
+def import_n_pred(image_data,model):
+    size = (128,128)
+    image = image_data.resize(size, Image.ANTIALIAS)
+    image = np.array(image)
+    image = np.expand_dims(image, axis=0) 
+    pred = model.predict(image)
+    return pred
+
+if generate_pred:
+    image = Image.open(upload_file)
+    
+    with st.expander('image', expanded=True):
+        st.image(image, use_column_width=True)
+    pred = import_n_pred(image,model)
+    labels = ['Covid-19','Healthy']
+    st.title("The Prediction of the image is {}".format(labels[np.argmax(pred)]))
+
+if __name__ = "__main__":
+  main()
