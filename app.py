@@ -26,7 +26,7 @@ generate_pred = st.button("Predict")
 
 def predictions(image,model):
     
-    img = cv2.resize(image, (128,128,3)
+    img = cv2.resize(image, (128,128,3))
     img = np.expand_dims(img, axis=0)
     pred = model.predict(img)
     
