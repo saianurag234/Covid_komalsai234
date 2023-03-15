@@ -9,7 +9,7 @@ st.title("Covid-19 Image Classifier")
 
 # creating a side bar 
 st.sidebar.title("4Created By:")
-st.sidebar.write("     P.S.S.Keerthana")
+st.sidebar.header("P.S.S.Keerthana")
 st.sidebar.subheader("P.Komal Sai Anurag")
 st.sidebar.subheader("Udayagiri Varun")
 st.sidebar.subheader("Sejal Singh")
