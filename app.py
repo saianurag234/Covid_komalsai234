@@ -19,7 +19,7 @@ st.sidebar.image("https://post.healthline.com/wp-content/uploads/2020/08/chest-x
 model = tf.keras.models.load_model('covid_classifier.h5')
 
 # creating an uploader to upload the Chest X-ray images
-uploaded_file = st.file_uploader("", type=['jpg','png','jpeg'])
+# uploaded_file = st.file_uploader("", type=['jpg','png','jpeg'])
 
 # creating a predict button
 generate_pred = st.button("Predict")
@@ -35,10 +35,8 @@ def predictions(image,model):
 
 if generate_pred:
     if uploaded_file is not None:
-        bytes_data = uploaded_file.getvalue()
-        image = Image.open(uploaded_file)
-        st.image(image,caption="Chest X-ray",use_column_width=True)
-        pred = predictions(bytes_data, model)
-        st.title(pred)
-        
-        
+        uploaded_files = st.file_uploader("Choose a CSV file", accept_multiple_files=True)
+    for uploaded_file in uploaded_files:
+        bytes_data = uploaded_file.read()
+        st.write("filename:", uploaded_file.name)
+        st.write(bytes_data)
