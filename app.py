@@ -1,9 +1,7 @@
 import streamlit as st
 import tensorflow as tf
 import numpy as np
-import cv2
-from PIL import Image, ImageOps
-from tensorflow.keras.preprocessing.image import img_to_array
+from PIL import Image
 
 # creating the title
 st.title("Covid-19 Image Classifier")
@@ -16,27 +14,27 @@ st.sidebar.subheader("Udayagiri Varun")
 st.sidebar.subheader("Sejal Singh")
 st.sidebar.image("https://post.healthline.com/wp-content/uploads/2020/08/chest-x-ray_thumb.jpg", width=None)
 
-model = tf.keras.models.load_model('covid_classifier.h5')
-
 # creating an uploader to upload the Chest X-ray images
-# uploaded_file = st.file_uploader("", type=['jpg','png','jpeg'])
+upload_file = st.file_uploader("Upload the Chest X-ray", type = 'jpg')
 
 # creating a predict button
 generate_pred = st.button("Predict")
 
-def predictions(image,model):
-    image = cv2.imread(image)
-    img = cv2.resize(image, (128,128,3))
-    img = np.expand_dims(img, axis=0)
-    pred = model.predict(img)
-    
+model = tf.keras.models.load_model('Covid_Classifier.h5')
+
+def import_n_pred(image_data,model):
+    size = (128,128)
+    image = image_data.resize(size, Image.ANTIALIAS)
+    image = np.array(image)
+    image = np.expand_dims(image, axis=0) 
+    pred = model.predict(image)
     return pred
 
-
 if generate_pred:
-    if uploaded_file is not None:
-        uploaded_files = st.file_uploader("Choose a CSV file", accept_multiple_files=True)
-    for uploaded_file in uploaded_files:
-        bytes_data = uploaded_file.read()
-        st.write("filename:", uploaded_file.name)
-        st.write(bytes_data)
+    image = Image.open(upload_file)
+    
+    with st.expander('image', expanded=True):
+        st.image(image, use_column_width=True)
+    pred = import_n_pred(image,model)
+    labels = ['Covid-19','Healthy']
+    st.title("The Prediction of the image is {}".format(labels[np.argmax(pred)]))
