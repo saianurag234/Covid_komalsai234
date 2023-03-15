@@ -25,12 +25,9 @@ uploaded_file = st.file_uploader("", type=['jpg','png','jpeg'])
 generate_pred = st.button("Predict")
 
 def predictions(image,model):
-    size = (128,128)
-    image = ImageOps.fit(image, size, Image.ANTIALIAS)
     
-    img = np.asarray(image)
-    img = img / 255.0
-    
+    img = cv2.resize(image, (128,128,3)
+    img = np.expand_dims(img, axis=0)
     pred = model.predict(img)
     
     return pred
