@@ -24,18 +24,18 @@ model = tf.keras.models.load_model('covid_classifier.h5')
 
 
 def import_n_pred(image_data,model):
-    size = (128,128,3)
-    image = image_data.resize(size, Image.ANTIALIAS)
-    image = np.array(image)
+    size = (128,128)
+    image = cv2.resize(image,size)
+    image = image.astype('float32') / 255.0
     image = np.expand_dims(image, axis=0) 
     pred = model.predict(image)
     return pred
 
 if generate_pred:
-    image = Image.open(upload_file)
-    
+    image = cv2.imdecode(np.frombuffer(upload_file.read(), np.uint8), 1)
     with st.expander('image', expanded=True):
         st.image(image, use_column_width=True)
     pred = import_n_pred(image,model)
+    st.title(pred)
     labels = ['Covid-19','Healthy']
     st.title("The Prediction of the image is {}".format(labels[np.argmax(pred)]))
