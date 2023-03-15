@@ -35,9 +35,10 @@ def predictions(image,model):
 
 if generate_pred:
     if uploaded_file is not None:
+        bytes_data = uploaded_file.getvalue()
         image = Image.open(uploaded_file)
         st.image(image,caption="Chest X-ray",use_column_width=True)
-        pred = predictions(image, model)
+        pred = predictions(bytes_data, model)
         st.title(pred)
         
         
