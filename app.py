@@ -2,7 +2,7 @@ import streamlit as st
 import tensorflow as tf
 import numpy as np
 import cv2
-from PIL import Image
+from PIL import Image, ImageOps
 from tensorflow.keras.preprocessing.image import img_to_array
 
 # creating the title
@@ -25,9 +25,11 @@ uploaded_file = st.file_uploader("", type=['jpg','png','jpeg'])
 generate_pred = st.button("Predict")
 
 def predictions(image,model):
-    image = image_data.resize((128,128), Image.ANTIALIAS)
-    img_array = np.array(image)
-    img = img_array / 255.0
+    size = (128,128)
+    image = ImageOps.fit(image, size, Image.ANTIALIAS)
+    
+    img = np.asarray(image)
+    img = img / 255.0
     
     pred = model.predict(img)
     
@@ -37,7 +39,6 @@ def predictions(image,model):
 if generate_pred:
     if uploaded_file is not None:
         image = Image.open(uploaded_file)
-        st.title(cv2.imread(image))
-        #pred = predictions(image,model)
-        #st.title(pred)
+        st.image(image,caption="Chest X-ray",use_column_width=True)
+        
         
