@@ -5,11 +5,11 @@ import cv2
 from PIL import Image
 
 # creating the title
-st.title("Covid-19 Image Classifier")
+st.title("Covid-19 Chest X-ray Classifier")
 
 # creating a side bar 
-st.sidebar.title("4Created By:")
-st.sidebar.header("P.S.S.Keerthana")
+st.sidebar.title("Created By:")
+st.sidebar.subheader("P.S.S.Keerthana")
 st.sidebar.subheader("P.Komal Sai Anurag")
 st.sidebar.subheader("Udayagiri Varun")
 st.sidebar.subheader("Sejal Singh")
