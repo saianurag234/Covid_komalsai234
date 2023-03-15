@@ -37,6 +37,7 @@ def predictions(image,model):
 if generate_pred:
     if uploaded_file is not None:
         image = Image.open(uploaded_file)
-        pred = predictions(image,model)
-        st.title(pred)
+        st.title(cv2.imread(image))
+        #pred = predictions(image,model)
+        #st.title(pred)
         
