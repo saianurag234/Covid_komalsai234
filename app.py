@@ -16,7 +16,7 @@ st.sidebar.subheader("Sejal Singh")
 st.sidebar.image("https://post.healthline.com/wp-content/uploads/2020/08/chest-x-ray_thumb.jpg", width=None)
 
 # creating an uploader to upload the Chest X-ray images
-upload_file = st.file_uploader("Upload the Chest X-ray", type = 'jpg')
+upload_file = st.file_uploader("Upload the Chest X-ray", type = ['jpg','png','jpeg'])
 
 # creating a predict button
 generate_pred = st.button("Predict")
@@ -38,4 +38,4 @@ if generate_pred:
         st.image(image, use_column_width=True)
     pred = import_n_pred(image,model)
     labels = ['Healthy','Covid-19']
-    st.title("The Prediction of the image is {}".format(labels[np.argmax(pred)]))
+    st.title("The Chest X-ray is {}".format(labels[np.argmax(pred)]))
