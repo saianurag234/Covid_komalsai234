@@ -40,5 +40,7 @@ if generate_pred:
     if uploaded_file is not None:
         image = Image.open(uploaded_file)
         st.image(image,caption="Chest X-ray",use_column_width=True)
+        pred = predictions(image, model)
+        st.title(pred)
         
         
