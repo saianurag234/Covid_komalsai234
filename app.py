@@ -16,7 +16,7 @@ st.sidebar.subheader("Udayagiri Varun")
 st.sidebar.subheader("Sejal Singh")
 st.sidebar.image("https://post.healthline.com/wp-content/uploads/2020/08/chest-x-ray_thumb.jpg", width=None)
 
-model = tf.keras.models.load_model('covid_classifier.h5', compile=False)
+model = tf.keras.models.load_model('covid_classifier.h5')
 
 # creating an uploader to upload the Chest X-ray images
 uploaded_file = st.file_uploader("", type=['jpg','png','jpeg'])
