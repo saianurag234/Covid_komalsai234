@@ -8,7 +8,7 @@ from PIL import Image
 st.title("Covid-19 Image Classifier")
 
 # creating a side bar 
-st.sidebar.title("Created By:")
+st.sidebar.title("     Created By:")
 st.sidebar.subheader("P.S.S.Keerthana")
 st.sidebar.subheader("P.Komal Sai Anurag")
 st.sidebar.subheader("Udayagiri Varun")
