@@ -26,7 +26,7 @@ model = tf.keras.models.load_model('covid_classifier.h5')
 
 def import_n_pred(image_data,model):
     size = (128,128)
-    image = cv2.resize(image,size)
+    image = cv2.resize(image_data,size)
     image = image.astype('float32') / 255.0
     image = np.expand_dims(image, axis=0) 
     pred = model.predict(image)
