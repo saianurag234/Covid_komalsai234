@@ -37,6 +37,5 @@ if generate_pred:
     with st.expander('image', expanded=True):
         st.image(image, use_column_width=True)
     pred = import_n_pred(image,model)
-    st.title(pred)
     labels = ['Healthy','Covid-19']
     st.title("The Prediction of the image is {}".format(labels[np.argmax(pred)]))
